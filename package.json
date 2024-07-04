@@ -1,0 +1,13 @@
+{
+  "name": "egypt_drug_checker_app",
+  "version": "1.0.0",
+  "description": "The first app in egypt to check the interactions between the different drugs",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy_cluster": "npm run build --prefix client && npm run cluster --prefix server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
