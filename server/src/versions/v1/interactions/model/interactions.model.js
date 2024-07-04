@@ -6,7 +6,7 @@ function getInteractionsNames (drugNames) {
 
   if (drugsArray.length <= 1) throw new Error('You must provide at least two drugs to check for interactions in format: drug1+drug2+drug3...');
   for (let i = 0; i < drugsArray.length - 1; i++) {
-    for (let j = i + 1; j < drugsArray.length; j++) { InteractionNamesArray.push(new RegExp(`${drugsArray[i]}[^+]*\\+[^+]*${drugsArray[j]}`, 'i')); }
+    for (let j = i + 1; j < drugsArray.length; j++) { InteractionNamesArray.push(new RegExp(`${drugsArray[i]}\\+${drugsArray[j]}`, 'i')); }
   }
   return InteractionNamesArray;
 }
