@@ -38,7 +38,7 @@ export default function useInitTutorial () {
     }
     tutorialSteps['check-interactions'].processFunction = getInteractionResults;
     tutorialSteps['image-upload'].processFunction = async () => {
-      const file = await fetchImageAsFile('http://54.160.113.163/img/uploads/932_1.jpg');
+      const file = await fetchImageAsFile('https://www.ashrafatef.tech/img/uploads/932_1.jpg');
       await addImage(file);
     };
   }
