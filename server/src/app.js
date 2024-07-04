@@ -14,8 +14,8 @@ const cspOptions = {
   },
 };
 
-app.use(helmet());
-app.use(helmet.contentSecurityPolicy(cspOptions));
+// app.use(helmet());
+// app.use(helmet.contentSecurityPolicy(cspOptions));
 app.use(morgan('combined'));
 app.use(cors({
   origin: ORIGIN
