@@ -2,7 +2,7 @@ const { getInteractionsDB, addInteractionDB, deleteInteractionDB, updateInteract
 
 async function getInteractions (req, res) {
   try {
-    const interactions = await getInteractionsDB(req.params.drugs);
+    const interactions = await getInteractionsDB(req.query.drugs);
     res.status(200).send(interactions);
   } catch (error) {
     res.status(400).send({ error: error.message });
@@ -20,7 +20,7 @@ async function addInteraction (req, res) {
 
 async function deleteInteraction (req, res) {
   try {
-    await deleteInteractionDB(req.params.name);
+    await deleteInteractionDB(req.query.name);
     res.status(200).send({ message: 'Interaction deleted successfully' });
   } catch (error) {
     res.status(400).send({ error: error.message });

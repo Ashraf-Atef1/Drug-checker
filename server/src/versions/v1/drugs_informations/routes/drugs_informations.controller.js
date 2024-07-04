@@ -2,7 +2,7 @@ const { getDrugsInformationDB, addDrugsInformationDB, deleteDrugsInformationDB, 
 
 async function getDrugsInformation (req, res) {
   try {
-    const drugsInformation = await getDrugsInformationDB(req.params.drugName, req.query.searchBy);
+    const drugsInformation = await getDrugsInformationDB(req.query.drugName, req.query.searchBy);
     res.status(200).send(drugsInformation);
   } catch (error) {
     res.status(400).send({ error: error.message });
@@ -20,7 +20,7 @@ async function addDrugsInformation (req, res) {
 
 async function deleteDrugsInformation (req, res) {
   try {
-    await deleteDrugsInformationDB(req.params.tradeName);
+    await deleteDrugsInformationDB(req.query.tradeName);
     res.status(200).send({ message: 'Drug information deleted successfully' });
   } catch (error) {
     res.status(400).send({ error: error.message });

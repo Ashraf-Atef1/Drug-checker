@@ -2,9 +2,9 @@ const { getDrugsInformation, addDrugsInformation, deleteDrugsInformation, update
 const express = require('express');
 const drugsInformationRoute = express.Router();
 
-drugsInformationRoute.get('/:drugName', getDrugsInformation);
+drugsInformationRoute.get('/', getDrugsInformation);
 drugsInformationRoute.post('/', addDrugsInformation);
-drugsInformationRoute.delete('/:tradeName', deleteDrugsInformation);
+drugsInformationRoute.delete('/', deleteDrugsInformation);
 drugsInformationRoute.patch('/', updateDrugsInformation);
 
 module.exports = drugsInformationRoute;

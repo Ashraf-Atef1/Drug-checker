@@ -2,7 +2,7 @@ const { getInteractionNames, addInteractionName, deleteInteractionName, updateIn
 
 async function getInteractionNamesController (req, res) {
   try {
-    const interactionNames = await getInteractionNames(req.params.interactionNames);
+    const interactionNames = await getInteractionNames(req.query.interactionNames);
     res.status(200).send(interactionNames);
   } catch (error) {
     res.status(400).send({ error: error.message });
@@ -20,7 +20,7 @@ async function addInteractionNameController (req, res) {
 
 async function deleteInteractionNameController (req, res) {
   try {
-    await deleteInteractionName(req.params.drugName);
+    await deleteInteractionName(req.query.drugName);
     res.status(200).send({ message: 'Interaction name deleted successfully' });
   } catch (error) {
     res.status(400).send({ error: error.message });

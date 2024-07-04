@@ -1,12 +1,17 @@
-const DRUG_API_URL = 'http://54.160.113.163/api/v1';
+const DRUG_API_URL = 'http://localhost:5000/api/v1';
 const IMAGE_API_URL = 'http://54.160.113.163/img';
 
 export async function httpGetDrugsInformations (searchValue, searchType = '') {
-  const encodedSearchValue = encodeURIComponent(searchValue);
-  const encodedSearchType = encodeURIComponent(searchType);
-  const fetchPath = `${DRUG_API_URL}/drugs-information/${encodedSearchValue}?searchBy=${encodedSearchType}`;
+  // const encodedSearchValue = encodeURIComponent(searchValue);
+  // const encodedSearchType = encodeURIComponent(searchType);
+  const fetchPath = new URL(`${DRUG_API_URL}/drugs-information`);
+  const params = new URLSearchParams();
+  params.append('drugName', searchValue);
+  params.append('searchBy', searchType);
+  fetchPath.search = params.toString();
+
   try {
-    const DrugsInformations = await fetch(fetchPath);
+    const DrugsInformations = await fetch(fetchPath.toString());
     if (!DrugsInformations.ok) {
       alert('Error: Drugs information server is not responding.');
       return [];
@@ -18,11 +23,14 @@ export async function httpGetDrugsInformations (searchValue, searchType = '') {
   }
 }
 
-export async function httpGetInteractionNamesList (interactionName = '') {
-  interactionName = encodeURIComponent(interactionName);
-  const fetchPath = `${DRUG_API_URL}/interaction-names/${interactionName}`;
+export async function httpGetInteractionNamesList (interactionNames = '') {
+  // interactionNames = encodeURIComponent(interactionNames);
+  const fetchPath = new URL(`${DRUG_API_URL}/interaction-names`);
+  const params = new URLSearchParams();
+  params.append('interactionNames', interactionNames);
+  fetchPath.search = params.toString();
   try {
-    const interactionNamesList = await fetch(fetchPath);
+    const interactionNamesList = await fetch(fetchPath.toString());
     if (!interactionNamesList.ok) {
       // alert("Error: This drug didn't have a genaric name so can not be added into the interaction-list plaese choose another drug with a genaric name.");
       return null;
@@ -35,10 +43,14 @@ export async function httpGetInteractionNamesList (interactionName = '') {
 }
 
 export async function httpGetInteractionResults (drugsList) {
-  const requestDrugs = encodeURIComponent([...new Set(drugsList)].join('+'));
-  const fetchPath = `${DRUG_API_URL}/interactions/${requestDrugs}`;
+  // const requestDrugs = encodeURIComponent([...new Set(drugsList)].join('+'));
+  const requestDrugs = [...new Set(drugsList)].join('+');
+  const fetchPath = new URL(`${DRUG_API_URL}/interactions`);
+  const params = new URLSearchParams();
+  params.append('drugs', requestDrugs);
+  fetchPath.search = params.toString();
   try {
-    const interactionsResults = await fetch(fetchPath);
+    const interactionsResults = await fetch(fetchPath.toString());
     if (!interactionsResults.ok) {
       alert('Error: Please add drugs with 2 or more diffrent active ingredients.');
       return null;

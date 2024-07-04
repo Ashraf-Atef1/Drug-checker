@@ -2,9 +2,9 @@ const { getInteractionNamesController, addInteractionNameController, deleteInter
 const express = require('express');
 const interactionNamesRoute = express.Router();
 
-interactionNamesRoute.get('/:interactionNames', getInteractionNamesController);
+interactionNamesRoute.get('/', getInteractionNamesController);
 interactionNamesRoute.post('/', addInteractionNameController);
-interactionNamesRoute.delete('/:drugName', deleteInteractionNameController);
+interactionNamesRoute.delete('/', deleteInteractionNameController);
 interactionNamesRoute.patch('/', updateInteractionNameController);
 
 module.exports = interactionNamesRoute;
