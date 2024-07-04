@@ -61,7 +61,6 @@ export default function useUploadImage () {
       const file = event.target.files[0];
       file && addImage(file);
     };
-    input.click();
   }
   return { onDrop, openCamera, addImage };
 }
