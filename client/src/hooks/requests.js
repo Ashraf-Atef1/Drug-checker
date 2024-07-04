@@ -1,5 +1,5 @@
-const DRUG_API_URL = 'http://54.160.113.163/api/v1';
-const IMAGE_API_URL = 'http://54.160.113.163/img';
+const DRUG_API_URL = 'https://www.ashrafatef.tech/api/v1';
+const IMAGE_API_URL = 'https://www.ashrafatef.tech/img';
 
 export async function httpGetDrugsInformations (searchValue, searchType = '') {
   const fetchPath = new URL(`${DRUG_API_URL}/drugs-information`);
