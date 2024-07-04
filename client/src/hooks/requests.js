@@ -1,9 +1,7 @@
-const DRUG_API_URL = 'http://localhost:5000/api/v1';
+const DRUG_API_URL = 'http://54.160.113.163/api/v1';
 const IMAGE_API_URL = 'http://54.160.113.163/img';
 
 export async function httpGetDrugsInformations (searchValue, searchType = '') {
-  // const encodedSearchValue = encodeURIComponent(searchValue);
-  // const encodedSearchType = encodeURIComponent(searchType);
   const fetchPath = new URL(`${DRUG_API_URL}/drugs-information`);
   const params = new URLSearchParams();
   params.append('drugName', searchValue);
@@ -24,7 +22,6 @@ export async function httpGetDrugsInformations (searchValue, searchType = '') {
 }
 
 export async function httpGetInteractionNamesList (interactionNames = '') {
-  // interactionNames = encodeURIComponent(interactionNames);
   const fetchPath = new URL(`${DRUG_API_URL}/interaction-names`);
   const params = new URLSearchParams();
   params.append('interactionNames', interactionNames);
@@ -43,7 +40,6 @@ export async function httpGetInteractionNamesList (interactionNames = '') {
 }
 
 export async function httpGetInteractionResults (drugsList) {
-  // const requestDrugs = encodeURIComponent([...new Set(drugsList)].join('+'));
   const requestDrugs = [...new Set(drugsList)].join('+');
   const fetchPath = new URL(`${DRUG_API_URL}/interactions`);
   const params = new URLSearchParams();
