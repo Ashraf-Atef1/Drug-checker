@@ -1,4 +1,4 @@
-const DRUG_API_URL = 'http://localhost:5000/api/v1';
+const DRUG_API_URL = 'http://54.160.113.163/api/v1';
 const IMAGE_API_URL = 'http://54.160.113.163/img';
 
 export async function httpGetDrugsInformations (searchValue, searchType = '') {
