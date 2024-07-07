@@ -6,13 +6,17 @@ import Button from '../button/button.component';
 export default function Tutorial () {
   const { currentTutorialInfo, handleCurrentStep, disableTutorialMode } = useTutorial();
   let { title, description, dimensions, navigate, bottomBar } = currentTutorialInfo;
-  const { top, left, right, bottom, width } = dimensions;
+  let { top, left, right, bottom, width } = dimensions;
   const scrollTo = window.scrollY + bottom - (window.innerHeight / 2);
+  let className = 'top';
   if (window.innerWidth > 768) {
     bottomBar = false;
   }
+  if (bottomBar) {
+    className = 'bottom'
+  }
   if (title === 'AI response') {
-    bottomBar = true;
+    className = 'bottom bottom-static'
   }
   if (window.innerHeight < bottom + 400) {
     document.body.style.height = '2000px';
@@ -24,7 +28,7 @@ export default function Tutorial () {
   }
   const indentation = window.innerWidth > 480 ? 460 : 0;
   return (
-    <TutorialContainer id='tutorial-guide' className={bottomBar ? 'bottom' : 'top'} dimensions={{ top, left, bottom, indentation, navigate }}>
+    <TutorialContainer id='tutorial-guide' className={className} dimensions={{ top, left, bottom, indentation, navigate }}>
       <NextStopContainer>
         <div id='tutorial-skip' onClick={disableTutorialMode}>
           <Button type='blur tutorial' text='End Tutorial' />

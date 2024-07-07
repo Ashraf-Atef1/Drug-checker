@@ -16,6 +16,10 @@ border-radius: 10px;
 &.bottom {
     bottom: ${props => props.dimensions.bottom - window.innerHeight + 120 - window.scrollY}px;
 }
+&.bottom-static {
+    bottom: initial;
+    top: ${props => 2000 - props.dimensions.top}px;
+}
 left: ${props => {
     if (!props.dimensions.indentation) {
         return 20;
