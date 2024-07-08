@@ -1,5 +1,5 @@
 # Egypt Drug Checker App
-
+![Screenshot of Egypt Drug Checker App](https://i.ibb.co/7kwQzFd/Screenshot-from-2024-06-27-14-21-33.png)
 ## Introduction
 The Egypt Drug Checker app is the first application in Egypt designed to check drug interactions using the trade-names of medications commonly used in the country. Inspired by the need for a reliable tool to ensure safe medication use, our app aims to enhance healthcare safety by preventing adverse drug reactions and improving patient outcomes.
 
