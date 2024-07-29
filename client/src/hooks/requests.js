@@ -1,12 +1,11 @@
-const DRUG_API_URL = 'https://www.ashrafatef.tech/api/v1';
-const IMAGE_API_URL = 'https://www.ashrafatef.tech/img';
+const DRUG_API_URL = '/api/v1';
+const IMAGE_API_URL = '/img';
 
 export async function httpGetDrugsInformations (searchValue, searchType = '') {
-  const fetchPath = new URL(`${DRUG_API_URL}/drugs-information`);
   const params = new URLSearchParams();
   params.append('drugName', searchValue);
   params.append('searchBy', searchType);
-  fetchPath.search = params.toString();
+  const fetchPath = `${DRUG_API_URL}/drugs-information?${params.toString()}`;
 
   try {
     const DrugsInformations = await fetch(fetchPath.toString());
@@ -22,10 +21,10 @@ export async function httpGetDrugsInformations (searchValue, searchType = '') {
 }
 
 export async function httpGetInteractionNamesList (interactionNames = '') {
-  const fetchPath = new URL(`${DRUG_API_URL}/interaction-names`);
   const params = new URLSearchParams();
   params.append('interactionNames', interactionNames);
-  fetchPath.search = params.toString();
+  const fetchPath = `${DRUG_API_URL}/interaction-names?${params.toString()}`;
+
   try {
     const interactionNamesList = await fetch(fetchPath.toString());
     if (!interactionNamesList.ok) {
@@ -41,10 +40,10 @@ export async function httpGetInteractionNamesList (interactionNames = '') {
 
 export async function httpGetInteractionResults (drugsList) {
   const requestDrugs = [...new Set(drugsList)].join('+');
-  const fetchPath = new URL(`${DRUG_API_URL}/interactions`);
   const params = new URLSearchParams();
   params.append('drugs', requestDrugs);
-  fetchPath.search = params.toString();
+  const fetchPath = `${DRUG_API_URL}/interactions?${params.toString()}`;
+
   try {
     const interactionsResults = await fetch(fetchPath.toString());
     if (!interactionsResults.ok) {

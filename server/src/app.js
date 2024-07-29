@@ -9,13 +9,16 @@ const path = require('path');
 const cspOptions = {
   directives: {
     defaultSrc: ["'self'"],
-    imgSrc: ["'self'", "data:", "https://i.ibb.co"],
+    imgSrc: ["'self'", "data:", "https://i.ibb.co", "https://www.ashrafatef.tech", "https://ashrafatef.tech"],
+    scriptSrc: ["'self'", "https://www.ashrafatef.tech", "https://ashrafatef.tech"],
     frameSrc: ["'self'", "https://www.youtube.com"],
+    connectSrc: ["'self'", "https://i.ibb.co/9sz6Q1T/932.jpg"],
+    workerSrc: ["'self'", "blob:"]
   },
 };
 
-// app.use(helmet());
-// app.use(helmet.contentSecurityPolicy(cspOptions));
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy(cspOptions));
 app.use(morgan('combined'));
 app.use(cors({
   origin: ORIGIN

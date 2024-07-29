@@ -3,7 +3,7 @@ import LoadingContextProvider from './context/loading.context';
 import TutorialContextProvider from './context/tutorial.context';
 import TutorialStepsContextProvider from './context/tutorial-steps.context';
 import Provider from './providers/provider.jsx';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Navigation from './routes/navigation/navigation.route';
 import Home from './routes/home/home.route';
 import ImageSearch from './routes/image-search/image-search.route';
@@ -27,6 +27,7 @@ function App () {
                   <Route path='/more-information' element={<MoreInformation />} />
                   <Route path='/see-image/*' element={<SeeImage />} />
                   <Route path='/about' element={<About />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
                 </Route>
               </Routes>
             </Provider>
